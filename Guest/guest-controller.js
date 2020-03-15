@@ -4,34 +4,19 @@ const db = require('./guest-model')
 
 
 router.post("/comments", (req, res) => {
-    let { full_name, email_address, comment, number } = req.body;
-    // if (full_name && email_address && comment && number) {
-    db.insertComment(req.body)
-        .then(saved => {
-            res.status(201).json(saved)
-        })
-        .catch(error => {
-            res.status(500).json(error.message);
-        })
-    // } else {
-    //     res.status(400).json({ message: "Please Provide needed columns (full_name, email_address, comment)" })
-    // }
+    let { name, email, comment, number } = req.body;
+    if (name && email && comment) {
+        db.insertComment(req.body)
+            .then(saved => {
+                res.status(201).json(saved)
+            })
+            .catch(error => {
+                res.status(500).json(error.message);
+            })
+    } else {
+        res.status(400).json({ message: "Please Provide needed columns (full_name, email_address, comment)" })
+    }
 })
-
-// router.post("/parks", authenticate, (req, res) => {
-//     let {park_name, park_description, city, country} = req.body;
-//     if(park_name && park_description && city && country){
-//         db.addPark(req.body)
-//         .then(saved => {
-//             res.status(201).json(saved)
-//         })
-//         .catch(error => {
-//             res.status(500).json({message: "something went wrong:-. " + error.message});
-//         })
-//     }else{
-//       res.json({message: "Please provide all needed columns (park_name, park_description, city and country)"})
-//     }
-// })
 
 router.get("/comments", (req, res) => {
     db.getGuestComments()

@@ -1,24 +1,24 @@
 const db = require('../database/db-config');
 
 function getGuestComments() {
-    return db("guest")
-        .select('id', 'full_name', "email_address", "comment", 'number');
+    return db("usersList")
+        .select('id', 'name', "email", "comment", 'number');
 }
 
 function findCommentById(id) {
-    return db('guest')
+    return db('usersList')
         .where({ id }).first()
-        .select('id', 'full_name', "email_address", "comment", 'number');
+        .select('id', 'name', "email", "comment", 'number');
 }
 
 function findCommentByName(filter) {
-    return db('guest')
+    return db('usersList')
         .where('full_name', '=', filter).first()
-        .select('id', 'full_name', "email_address", "comment", 'number')
+        .select('id', 'name', "email", "comment", 'number')
 }
 
 function insertComment(comment) {
-    return db('guest')
+    return db('usersList')
         .insert(comment, 'id')
         .then(ids => {
             return findCommentById(ids[0]);

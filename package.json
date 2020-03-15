@@ -1,9 +1,11 @@
 {
-  "name": "Portfolio-B2",
+  "name": "portfolio-b2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,5 +30,8 @@
     "nodemailer": "^6.4.5",
     "nodemailer-express-handlebars": "^3.1.0",
     "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
