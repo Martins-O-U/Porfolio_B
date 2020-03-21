@@ -13,7 +13,7 @@ function findCommentById(id) {
 
 function findCommentByName(filter) {
     return db('usersList')
-        .where('full_name', '=', filter).first()
+        .where('name', '=', filter).first()
         .select('id', 'name', "email", "comment", 'number')
 }
 

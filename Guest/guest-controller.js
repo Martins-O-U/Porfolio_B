@@ -14,7 +14,7 @@ router.post("/comments", (req, res) => {
                 res.status(500).json(error.message);
             })
     } else {
-        res.status(400).json({ message: "Please Provide needed columns (full_name, email_address, comment)" })
+        res.status(400).json({ message: "Please Provide needed columns (name, email, comment)" })
     }
 })
 
